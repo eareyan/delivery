@@ -6,15 +6,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    """Return a friendly HTTP greeting."""
 
-    form  = """
+    form = """ 
     <form action="/signup" method="post">
         <input type="text" name="email"></input>
         <input type="submit" value="Signup"></input>
     </form>"""
 
-    return f"<h1>Hello World! Here we are!</h1><h2>Please sign up</h2>{form}"
+    return f"<h1>Hello World! Here we are 2!</h1><h2>Please sign up</h2>{form}"
+
 
 @app.route('/enrique')
 def enrique():
