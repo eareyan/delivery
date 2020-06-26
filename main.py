@@ -1,9 +1,10 @@
-from flask import Flask, request
-from google.cloud import storage
-import os 
+import os
 import sqlalchemy
+from flask import Flask, request, render_template
+from google.cloud import storage
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def hello():
@@ -23,6 +24,11 @@ def hello():
     </form>"""
 
     return f"<h1>Hello World! Here we are 2!</h1><h2>Please sign up</h2>{form}{list_of_people}"
+
+
+@app.route('/name')
+def name():
+    return render_template('cover.html') 
 
 
 @app.route('/enrique')
@@ -109,6 +115,7 @@ def init_unix_connection_engine(db_config):
     )
 
     return pool
+
 
 db = init_connection_engine()
 
