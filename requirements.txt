@@ -1,4 +1,6 @@
 Flask==1.1.2
 pytest
 pylint
+sqlalchemy
+pymysql
 google-cloud-storage==1.24.1
