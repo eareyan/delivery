@@ -11,6 +11,10 @@ def hello():
     with db.connect() as conn:
         # Execute the query and fetch all results
         data = conn.execute("SELECT * FROM entries").fetchall()
+        list_of_people = "<ul>"
+        for a, b, c in data:
+            list_of_people += f"<li>{a}, {b}, {c}</li>"
+        list_of_people += "</ul>"
 
     form = """ 
     <form action="/signup" method="post">
@@ -18,7 +22,7 @@ def hello():
         <input type="submit" value="Signup"></input>
     </form>"""
 
-    return f"<h1>Hello World! Here we are 2!</h1><h2>Please sign up</h2>{form}{data}"
+    return f"<h1>Hello World! Here we are 2!</h1><h2>Please sign up</h2>{form}{list_of_people}"
 
 
 @app.route('/enrique')
@@ -106,6 +110,7 @@ def init_unix_connection_engine(db_config):
 
     return pool
 
+db = init_connection_engine()
+
 if __name__ == '__main__':
-    db = init_connection_engine()
     app.run(host='127.0.0.1', port=8080, debug=True)
